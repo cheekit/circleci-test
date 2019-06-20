@@ -23,6 +23,7 @@ workflows:
       - build:
           context: development
       - deploy:
+          type: approval
           requires:
             - build
           context: production
