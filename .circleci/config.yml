@@ -12,20 +12,32 @@ jobs:
       - image: circleci/node:latest
     steps:
       - run: echo "Good night world"
+  test:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run:
+        - name: npm install
+        - command: npm i
+      - run: 
+        - name: run test
+        - command: npm run test-mocha
 
 workflows:
   version: 2
   workflow:
     jobs:
-      - build:
-          context: development
-  nightly:
-    triggers:
-      - schedule:
-          cron: "0,5,10,15,20,25,30,35,40,45,50,55,60 * * * *"
-          filters:
-            branches:
-              only:
-                - master
-    jobs:
-      - cron-job
+      - test
+      # - build:
+      #     context: development
+  # nightly:
+  #   triggers:
+  #     - schedule:
+  #         cron: "0,5,10,15,20,25,30,35,40,45,50,55,60 * * * *"
+  #         filters:
+  #           branches:
+  #             only:
+  #               - master
+  #   jobs:
+  #     - cron-job

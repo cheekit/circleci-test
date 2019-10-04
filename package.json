@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "showEnv": "printenv",
-    "test": "echo \"[$CIRCLE_USERNAME]: [$PROD] World\" && exit 0"
+    "test": "echo \"[$CIRCLE_USERNAME]: [$PROD] World\" && exit 0",
+    "test-mocha": "mocha"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/cheekit/circleci-test/issues"
   },
-  "homepage": "https://github.com/cheekit/circleci-test#readme"
+  "homepage": "https://github.com/cheekit/circleci-test#readme",
+  "dependencies": {
+    "mocha": "^6.2.1"
+  }
 }
