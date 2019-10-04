@@ -29,8 +29,8 @@ workflows:
   workflow:
     jobs:
       - test
-      # - build:
-      #     context: development
+      - build:
+          context: development
   # nightly:
   #   triggers:
   #     - schedule:
