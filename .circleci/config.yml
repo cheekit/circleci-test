@@ -2,6 +2,11 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
+
+orbs:
+  prebuild-orb: netgaintechnology/prebuild-orb@volatile
+  orb-tools: circleci/orb-tools@volatile
+
 executors:
   node:
     docker:
@@ -22,4 +27,4 @@ workflows:
   version: 2
   workflow:
     jobs:
-      - build
+      - prebuild-orb/yaml_lint
