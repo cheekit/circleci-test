@@ -11,7 +11,7 @@ executors:
   node:
     docker:
       - image: circleci/node:latest
-    resource_class: medium
+    resource_class: small
 
 version: 2.1
 jobs:
