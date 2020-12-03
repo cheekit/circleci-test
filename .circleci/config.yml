@@ -72,33 +72,6 @@ jobs:
   test17:
     <<: *job
     environment: *envvars-test
-  test18:
-    <<: *job
-    environment: *envvars-test
-  test19:
-    <<: *job
-    environment: *envvars-test
-  test20:
-    <<: *job
-    environment: *envvars-test
-  test21:
-    <<: *job
-    environment: *envvars-test
-  test22:
-    <<: *job
-    environment: *envvars-test
-  test23:
-    <<: *job
-    environment: *envvars-test
-  test24:
-    <<: *job
-    environment: *envvars-test
-  test25:
-    <<: *job
-    environment: *envvars-test
-  test26:
-    <<: *job
-    environment: *envvars-test
 
 workflows:
   version: 2
