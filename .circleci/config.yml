@@ -22,7 +22,8 @@ jobs:
       - run:
           name: "checkout submodules"
           command: |
-            git submodule update --init
+            echo "hello"
+  
   test2:
     <<: *job
     environment: *envvars-test
@@ -96,9 +97,6 @@ jobs:
     <<: *job
     environment: *envvars-test
   test26:
-    <<: *job
-    environment: *envvars-test
-  test27:
     <<: *job
     environment: *envvars-test
 
