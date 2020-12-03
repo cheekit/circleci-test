@@ -3,62 +3,20 @@ version: 2
 references:
   envvars-test: &envvars-test
     KEY: test
-  dummy-job: &dummy-job
+  job: &job
     docker:
-      - image: circleci/node:12.16.0
-    resource_class: medium
+      - image: alpine
+    resource_class: xlarge
+    environment: *envvars-test
     steps:
-      - checkout
-      - run:
-          name: "hoge fuga"
-          command: |
-            echo hoge
-            echo fuga
-      - run:
-          name: "checkout submodules"
-          command: |
-            git submodule update --init
-      - restore_cache:
-          name: "restore modules"
-          keys:
-            - package-lock-json-{{ checksum "package-lock.json" }}
-      - run:
-          name: "install dependecies"
-          command: |
-            npm install
-      - save_cache:
-          name: "save modules"
-          key: package-lock-json-{{ checksum "package-lock.json" }}
-          paths:
-            - ./node_modules
-      - run:
-          name: "hoge fuga"
-          command: |
-            echo hoge
-            echo fuga
-      - run:
-          name: "hoge fuga"
-          command: |
-            echo hoge
-            echo fuga
-          no_output_timeout: 30m
-      - run:
-          name: "hoge fuga"
-          command: |
-            echo hoge
-            echo fuga
-      - run:
-          name: "hoge fuga"
-          command: |
-            echo hoge
-            echo fuga
-          when: on_fail
+      - run: env
 
 jobs:
-  test:
+  test1:
     docker:
-      - image: circleci/node:12.16.0
+      - image: alpine
     resource_class: xlarge
+    environment: *envvars-test
     steps:
       - checkout
       - run:
@@ -66,95 +24,86 @@ jobs:
           command: |
             git submodule update --init
   test2:
-    <<: *dummy-job
+    <<: *job
     environment: *envvars-test
   test3:
-    <<: *dummy-job
+    <<: *job
     environment: *envvars-test
   test4:
-    <<: *dummy-job
+    <<: *job
     environment: *envvars-test
   test5:
-    <<: *dummy-job
+    <<: *job
     environment: *envvars-test
   test6:
-    <<: *dummy-job
+    <<: *job
     environment: *envvars-test
   test7:
-    <<: *dummy-job
+    <<: *job
     environment: *envvars-test
   test8:
-    <<: *dummy-job
+    <<: *job
     environment: *envvars-test
   test9:
-    <<: *dummy-job
+    <<: *job
     environment: *envvars-test
   test10:
-    <<: *dummy-job
+    <<: *job
     environment: *envvars-test
   test11:
-    <<: *dummy-job
+    <<: *job
     environment: *envvars-test
   test12:
-    <<: *dummy-job
+    <<: *job
     environment: *envvars-test
   test13:
-    <<: *dummy-job
+    <<: *job
     environment: *envvars-test
   test14:
-    <<: *dummy-job
+    <<: *job
     environment: *envvars-test
   test15:
-    <<: *dummy-job
+    <<: *job
     environment: *envvars-test
   test16:
-    <<: *dummy-job
+    <<: *job
     environment: *envvars-test
   test17:
-    <<: *dummy-job
+    <<: *job
     environment: *envvars-test
   test18:
-    <<: *dummy-job
+    <<: *job
     environment: *envvars-test
   test19:
-    <<: *dummy-job
+    <<: *job
     environment: *envvars-test
   test20:
-    <<: *dummy-job
+    <<: *job
     environment: *envvars-test
   test21:
-    <<: *dummy-job
+    <<: *job
     environment: *envvars-test
   test22:
-    <<: *dummy-job
+    <<: *job
     environment: *envvars-test
   test23:
-    <<: *dummy-job
+    <<: *job
     environment: *envvars-test
   test24:
-    <<: *dummy-job
+    <<: *job
     environment: *envvars-test
   test25:
-    <<: *dummy-job
+    <<: *job
     environment: *envvars-test
   test26:
-    <<: *dummy-job
+    <<: *job
     environment: *envvars-test
   test27:
-    <<: *dummy-job
-    environment: *envvars-test
-  test28:
-    <<: *dummy-job
-    environment: *envvars-test
-  test29:
-    <<: *dummy-job
-    environment: *envvars-test
-  test30:
-    <<: *dummy-job
+    <<: *job
     environment: *envvars-test
 
 workflows:
   version: 2
   test:
     jobs:
-      - test
+      - test1
