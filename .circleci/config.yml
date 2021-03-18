@@ -18,15 +18,15 @@ workflows:
     jobs:
       - build:
           context: cron-job
-  nightly:
-    triggers:
-      - schedule:
-          cron: "* * * * *"
-          filters:
-            branches:
-              only:
-                - test/scheduled-workflow
-    jobs:
-      - cron-job:
-          context: non-restricted
+#   nightly:
+#     triggers:
+#       - schedule:
+#           cron: "* * * * *"
+#           filters:
+#             branches:
+#               only:
+#                 - test/scheduled-workflow
+#     jobs:
+#       - cron-job:
+#           context: non-restricted
 
