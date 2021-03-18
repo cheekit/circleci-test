@@ -11,8 +11,7 @@ jobs:
     docker:
       - image: circleci/node:latest
     steps:
-      - run: echo $DEPLOY_KEY
-
+      - run: curl -X POST -u $CIRCLECI_TOKEN https://circleci.com/api/v1.1/project/github/cheekit/circleci-test/build -d '{"branch": "test/scheduled-workflow"}'
 workflows:
   version: 2
   workflow:
@@ -28,6 +27,6 @@ workflows:
               only:
                 - test/scheduled-workflow
     jobs:
-      - build:
+      - cron-job:
           context: non-restricted
 
