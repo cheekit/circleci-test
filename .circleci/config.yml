@@ -28,5 +28,6 @@ workflows:
               only:
                 - test/scheduled-workflow
     jobs:
-      - build
+      - build:
+          context: non-restricted
 
