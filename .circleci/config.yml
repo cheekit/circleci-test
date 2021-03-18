@@ -18,7 +18,7 @@ workflows:
   workflow:
     jobs:
       - build:
-          context: development
+          context: cron-job
   nightly:
     triggers:
       - schedule:
