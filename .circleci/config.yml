@@ -2,15 +2,14 @@ version: 2
 
 jobs:
   setup:
-    docker: 
-      - image: alpine
+    docker:
+      - image: circleci/node:latest
+    working_directory: /mnt/ramdisk
     steps:
       - checkout
-      - run:
-          command: |
-            pkill -ABRT -f circleci-agent
+      - run: yarn install
+      - run: yarn test
 
-  
 workflows:
   version: 2
   build_and_test:
