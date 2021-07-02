@@ -7,6 +7,8 @@ jobs:
     working_directory: /dev/shm
     steps:
         - run: |
+            ls -la /mnt
+        - run: |
             echo '#!/bin/sh' > run.sh
             echo 'echo Hello world!' >> run.sh
             chmod +x run.sh
