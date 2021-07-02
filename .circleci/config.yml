@@ -1,17 +1,31 @@
 version: 2
 
 jobs:
-  setup:
+  setup-shm:
     docker:
       - image: circleci/node:latest
     working_directory: /dev/shm
     steps:
-      - checkout
-      - run: yarn install
-      - run: yarn test
+        - run: |
+            echo '#!/bin/sh' > run.sh
+            echo 'echo Hello world!' >> run.sh
+            chmod +x run.sh
+        - run: bash ./run.sh
+  setup-ram:
+    docker:
+      - image: circleci/node:latest
+    working_directory: /mnt/ramdisk
+    steps:
+        - run: |
+            echo '#!/bin/sh' > run.sh
+            echo 'echo Hello world!' >> run.sh
+            chmod +x run.sh
+        - run: bash ./run.sh
+
 
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - setup
+      - setup-shm
+      - setup-ram
